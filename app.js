@@ -13,18 +13,13 @@ const app = Vue.createApp({
   data(){
     return {
       phrases_of_heroes: quotes,
-      newQuotes: ''
+      newQuotes: 'por defecto'
     }
   },
   methods: {
-    addQuote( event ){
-      console.log(this.newQuotes)
-      console.log(event)
-
+    addQuote(){
       //insertar el nuevo input en la lista de quotes
-      if (event.charCode !== 13 ) return
-
-      this.quote.unshift({
+      this.phrases_of_heroes.unshift({
         quote: this.newQuotes
       })
     }

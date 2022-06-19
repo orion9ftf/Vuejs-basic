@@ -18,49 +18,17 @@
       <input 
         type="text" 
         v-model="newQuotes"
-        v-on:keypress="addQuote">
+        v-on:keypress.enter="addQuote">
 
       <h3><small>{{ newQuotes }}</small></h3>
       <hr>
-      <table class="table">
-        <thead>
-          <tr>
-            <th scope="col">quote:</th>
-            <th scope="col">author:</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr v-for="phrases in phrases_of_heroes">
-            <th>{{ phrases.quote }}</th>
-            <td>{{ phrases.author }}</td>
-          </tr>
-        </tbody>
-      </table>
-
-      <ul>
-        <li v-for="phrases in phrases_of_heroes">
-          <span>{{ phrases.quote }}</span>
-          <blockquote> -{{ phrases.author }}</blockquote>
-        </li>
-      </ul>
-
-      <hr>
-      <!-- desestructuración -->
-
-      <h3>Desestructuración</h3>
-      <ul>
-        <li v-for="{ quote, author} in phrases_of_heroes">
-          <span>{{ quote }}</span>
-          <blockquote>-{{ author }}</blockquote>
-        </li>
-      </ul>
-
-      
+     
       <h3>Con índice:</h3>
       <ul>
         <li v-for="({quote, author }, index) in phrases_of_heroes">
           <span>{{ index }}.- {{ quote }}</span>
-          <blockquote>-{{ author }}</blockquote>
+          <!-- <blockquote v-if="author">-{{ author }}</blockquote> -->
+          <blockquote v-show="author">-{{ author }}</blockquote>
         </li>
       </ul>
 
