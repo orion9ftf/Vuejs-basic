@@ -15,6 +15,13 @@
     <div id="myApp" class="container my-4">
       <h1 class="text-danger text-center my-5">Batman quotes</h1>
 
+      <input 
+        type="text" 
+        v-model="newQuotes"
+        v-on:keypress="addQuote">
+
+      <h3><small>{{ newQuotes }}</small></h3>
+      <hr>
       <table class="table">
         <thead>
           <tr>
@@ -32,7 +39,28 @@
 
       <ul>
         <li v-for="phrases in phrases_of_heroes">
-          {{ phrases }}
+          <span>{{ phrases.quote }}</span>
+          <blockquote> -{{ phrases.author }}</blockquote>
+        </li>
+      </ul>
+
+      <hr>
+      <!-- desestructuración -->
+
+      <h3>Desestructuración</h3>
+      <ul>
+        <li v-for="{ quote, author} in phrases_of_heroes">
+          <span>{{ quote }}</span>
+          <blockquote>-{{ author }}</blockquote>
+        </li>
+      </ul>
+
+      
+      <h3>Con índice:</h3>
+      <ul>
+        <li v-for="({quote, author }, index) in phrases_of_heroes">
+          <span>{{ index }}.- {{ quote }}</span>
+          <blockquote>-{{ author }}</blockquote>
         </li>
       </ul>
 
